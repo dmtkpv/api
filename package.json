@@ -1,0 +1,29 @@
+{
+  "name": "@dmtkpv/api",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "serve": "pnpm -C example run serve"
+  },
+  "dependencies": {
+    "axios": "^1.4.0",
+    "express": "^4.18.2"
+  },
+  "peerDependencies": {
+    "vue": "^3.3.4"
+  },
+  "exports": "./lib/index.js",
+  "description": "Server Side Rendering for Vite + Vue",
+  "repository": "github:dmtkpv/api",
+  "author": "Dmitriy Karpov",
+  "license": "MIT",
+  "keywords": [
+    "vue",
+    "api",
+    "xhr",
+    "http"
+  ],
+  "files": [
+    "lib"
+  ]
+}
