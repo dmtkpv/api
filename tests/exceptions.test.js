@@ -6,8 +6,7 @@ test('Missing endpoints', async () => {
 
 test('Missing endpoint key', async () => {
     const { endpoint } = createAPI({ endpoints: {} });
-    const { fetch } = endpoint('test')
-    expect(() => fetch()).toThrow(/^Missing configuration/);
+    expect(() => endpoint('test')).toThrow(/^Missing configuration/);
 })
 
 
