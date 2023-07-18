@@ -19,11 +19,11 @@ test('Endpopint', async () => {
     await promise.value;
     expect(pending.value).toBe(false);
     expect(data.value.data.ok).toBe(true);
-    expect(error.value).toBe(null);
+    expect(error.value).toBe(undefined);
 
     await fetch({ error: true });
     expect(pending.value).toBe(false);
-    expect(data.value).toBe(null);
+    expect(data.value).toBe(undefined);
     expect(error.value instanceof Error).toBe(true);
 
     server.close();

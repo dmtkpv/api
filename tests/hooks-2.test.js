@@ -1,7 +1,7 @@
 import createAPI from './common/api.js'
 import createServer from './common/server.js'
 
-test('Hooks', async () => {
+test('Hooks 2', async () => {
 
     const server = createServer();
     const port = server.address().port;
