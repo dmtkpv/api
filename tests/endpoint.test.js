@@ -4,7 +4,8 @@ import createServer from './common/server.js'
 test('Endpopint', async () => {
 
     const server = createServer();
-    const api = createAPI();
+    const port = server.address().port;
+    const api = createAPI({ port });
     const { fetch, data, error, pending, promise } = api.endpoint('test');
 
     expect(data.value).toBe(undefined);

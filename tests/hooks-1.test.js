@@ -66,7 +66,8 @@ test('Hooks', async () => {
     // ------------------
 
     const server = createServer();
-    const api = createAPI({ endpoints });
+    const port = server.address().port;
+    const api = createAPI({ endpoints, port });
     const test = api.endpoint('test');
 
 

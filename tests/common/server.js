@@ -11,6 +11,6 @@ export default function ({ port = 49099 } = {}) {
         }, req.query.delay)
     })
 
-    return app.listen(port);
+    return app.listen(0);
 
 }

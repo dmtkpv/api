@@ -48,7 +48,8 @@ test('Pending', async () => {
     // ------------------
 
     const server = createServer();
-    const api = createAPI({ endpoints });
+    const port = server.address().port;
+    const api = createAPI({ endpoints, port });
 
     const test1 = api.endpoint('test1');
     const test2 = api.endpoint('test2');

@@ -54,11 +54,11 @@ test('Pending', async () => {
 
     let count = 0;
     const server = createServer();
-    const api = createAPI({ endpoints });
+    const port = server.address().port;
+    const api = createAPI({ endpoints, port });
     const test1 = api.endpoint('test1');
     const test2 = api.endpoint('test2');
     const test3 = api.endpoint('test3');
-    const hooks = [];
     let time = Date.now();
 
     api.onCancel(error => {

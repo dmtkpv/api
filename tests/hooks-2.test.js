@@ -3,8 +3,9 @@ import createServer from './common/server.js'
 
 test('Hooks', async () => {
 
-    const api = createAPI();
     const server = createServer();
+    const port = server.address().port;
+    const api = createAPI({ port });
     const test = api.endpoint('test');
 
     api.onFetch(() => {
