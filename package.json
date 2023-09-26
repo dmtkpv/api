@@ -1,6 +1,6 @@
 {
   "name": "@dmtkpv/api",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "scripts": {
     "test": "NODE_OPTIONS=--experimental-vm-modules npx jest"
