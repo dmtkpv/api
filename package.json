@@ -1,6 +1,6 @@
 {
   "name": "@dmtkpv/api",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "type": "module",
   "scripts": {
     "test": "NODE_OPTIONS=--experimental-vm-modules npx jest --runInBand"
