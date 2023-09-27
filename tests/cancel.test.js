@@ -76,7 +76,7 @@ test('Pending', async () => {
         count++
     })
 
-    test1.quite();
+    test1.quiet();
     await test1.cancel();
 
     expect(Date.now() - time).toBeLessThan(100);
@@ -84,9 +84,9 @@ test('Pending', async () => {
     expect(count).toBe(3);
     expect(test1.error.message).toBe('cancelled_in_config');
 
-    test1.quite();
-    test2.quite();
-    test3.quite();
+    test1.quiet();
+    test2.quiet();
+    test3.quiet();
 
     time = Date.now();
     await api.cancel();
@@ -94,7 +94,7 @@ test('Pending', async () => {
     expect(Date.now() - time).toBeLessThan(100);
     expect(api.pending.value).toBe(false);
 
-    test3.quite();
+    test3.quiet();
     await new Promise(resolve => setTimeout(resolve, 100));
 
     time = Date.now();

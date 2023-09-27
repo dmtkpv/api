@@ -13,7 +13,7 @@ test('Endpopint', async () => {
     expect(test.promise).resolves.toBe(undefined);
     expect(test.pending).toBe(false);
 
-    test.quite();
+    test.quiet();
     expect(test.pending).toBe(true);
 
     await test.promise;
@@ -21,7 +21,7 @@ test('Endpopint', async () => {
     expect(test.data.data.ok).toBe(true);
     expect(test.error).toBe(undefined);
 
-    await test.quite({ error: true });
+    await test.quiet({ error: true });
     expect(test.pending).toBe(false);
     expect(test.data).toBe(undefined);
     expect(test.error instanceof Error).toBe(true);

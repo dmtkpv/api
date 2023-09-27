@@ -179,7 +179,7 @@ test('Hooks 1', async () => {
     // Test
     // ------------------
 
-    await test.quite();
+    await test.quiet();
     if (test.error) throw test.error;
     expect(count).toBe(17);
     expect(test.data.suc2).toBe(true);
