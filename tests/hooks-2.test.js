@@ -17,7 +17,7 @@ test('Hooks 2', async () => {
         return { success: true }
     })
 
-    await test.fetch();
+    await test.quite();
     expect(test.data.success).toBe(true);
     server.close();
 

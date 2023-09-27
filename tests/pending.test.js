@@ -60,9 +60,9 @@ test('Pending', async () => {
     expect(test3.pending).toBe(false);
     expect(api.pending.value).toBe(false);
 
-    test1.fetch();
-    test2.fetch();
-    test3.fetch();
+    test1.quite();
+    test2.quite();
+    test3.quite();
 
     expect(test1.pending).toBe(true);
     expect(test2.pending).toBe(true);
@@ -83,7 +83,7 @@ test('Pending', async () => {
     expect(test3.pending).toBe(false);
     expect(api.pending.value).toBe(false);
 
-    test2.fetch();
+    test2.quite();
     expect(test2.pending).toBe(true);
     expect(api.pending.value).toBe(true);
 

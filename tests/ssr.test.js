@@ -9,7 +9,7 @@ test('SSR', async () => {
     const api1 = createAPI({ port, state, ssr: true });
     const test1 = api1.endpoint('test');
 
-    await test1.fetch();
+    await test1.quite();
     expect(state.test.data.data.ok).toBe(true);
 
     const data = state.test.data;
@@ -18,12 +18,12 @@ test('SSR', async () => {
 
     expect(test2.data === data).toBe(true);
 
-    test2.fetch();
+    test2.quite();
     expect(test2.pending).toBe(false);
     await test2.promise;
     expect(test2.data === data).toBe(true);
 
-    test2.fetch();
+    test2.quite();
     expect(test2.pending).toBe(true);
     await test2.promise;
     expect(test2.data === data).toBe(false);
