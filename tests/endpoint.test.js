@@ -6,25 +6,25 @@ test('Endpopint', async () => {
     const server = createServer();
     const port = server.address().port;
     const api = createAPI({ port });
-    const { fetch, data, error, pending, promise } = api.endpoint('test');
+    const test = api.endpoint('test');
 
-    expect(data.value).toBe(undefined);
-    expect(error.value).toBe(undefined);
-    expect(promise.value).resolves.toBe(undefined);
-    expect(pending.value).toBe(false);
+    expect(test.data).toBe(undefined);
+    expect(test.error).toBe(undefined);
+    expect(test.promise).resolves.toBe(undefined);
+    expect(test.pending).toBe(false);
 
-    fetch();
-    expect(pending.value).toBe(true);
+    test.fetch();
+    expect(test.pending).toBe(true);
 
-    await promise.value;
-    expect(pending.value).toBe(false);
-    expect(data.value.data.ok).toBe(true);
-    expect(error.value).toBe(undefined);
+    await test.promise;
+    expect(test.pending).toBe(false);
+    expect(test.data.data.ok).toBe(true);
+    expect(test.error).toBe(undefined);
 
-    await fetch({ error: true });
-    expect(pending.value).toBe(false);
-    expect(data.value).toBe(undefined);
-    expect(error.value instanceof Error).toBe(true);
+    await test.fetch({ error: true });
+    expect(test.pending).toBe(false);
+    expect(test.data).toBe(undefined);
+    expect(test.error instanceof Error).toBe(true);
 
     server.close();
 

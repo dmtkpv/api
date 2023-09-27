@@ -16,17 +16,17 @@ test('SSR', async () => {
     const api2 = createAPI({ port, state });
     const test2 = api2.endpoint('test');
 
-    expect(test2.data.value === data).toBe(true);
+    expect(test2.data === data).toBe(true);
 
     test2.fetch();
-    expect(test2.pending.value).toBe(false);
-    await test2.promise.value;
-    expect(test2.data.value === data).toBe(true);
+    expect(test2.pending).toBe(false);
+    await test2.promise;
+    expect(test2.data === data).toBe(true);
 
     test2.fetch();
-    expect(test2.pending.value).toBe(true);
-    await test2.promise.value;
-    expect(test2.data.value === data).toBe(false);
+    expect(test2.pending).toBe(true);
+    await test2.promise;
+    expect(test2.data === data).toBe(false);
 
     server.close();
 

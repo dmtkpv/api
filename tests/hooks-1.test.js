@@ -122,7 +122,7 @@ test('Hooks 1', async () => {
     api.onComplete(endpoint => {
         expect(++count).toBe(14);
         expect(ticked()).toBeGreaterThanOrEqual(100);
-        expect(endpoint.data.value.suc2).toBe(true);
+        expect(endpoint.data.suc2).toBe(true);
     })
 
     api.onComplete('test', async () => {
@@ -180,9 +180,9 @@ test('Hooks 1', async () => {
     // ------------------
 
     await test.fetch();
-    if (test.error.value) throw test.error.value;
+    if (test.error) throw test.error;
     expect(count).toBe(17);
-    expect(test.data.value.suc2).toBe(true);
+    expect(test.data.suc2).toBe(true);
     server.close();
 
 

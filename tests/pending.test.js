@@ -55,40 +55,40 @@ test('Pending', async () => {
     const test2 = api.endpoint('test2');
     const test3 = api.endpoint('test3');
 
-    expect(test1.pending.value).toBe(false);
-    expect(test2.pending.value).toBe(false);
-    expect(test3.pending.value).toBe(false);
+    expect(test1.pending).toBe(false);
+    expect(test2.pending).toBe(false);
+    expect(test3.pending).toBe(false);
     expect(api.pending.value).toBe(false);
 
     test1.fetch();
     test2.fetch();
     test3.fetch();
 
-    expect(test1.pending.value).toBe(true);
-    expect(test2.pending.value).toBe(true);
-    expect(test3.pending.value).toBe(true);
+    expect(test1.pending).toBe(true);
+    expect(test2.pending).toBe(true);
+    expect(test3.pending).toBe(true);
     expect(api.pending.value).toBe(true);
 
     await Promise.all([
-        test1.promise.value,
-        test2.promise.value
+        test1.promise,
+        test2.promise
     ])
 
-    expect(test1.pending.value).toBe(false);
-    expect(test2.pending.value).toBe(false);
-    expect(test3.pending.value).toBe(true);
+    expect(test1.pending).toBe(false);
+    expect(test2.pending).toBe(false);
+    expect(test3.pending).toBe(true);
     expect(api.pending.value).toBe(true);
 
-    await test3.promise.value;
-    expect(test3.pending.value).toBe(false);
+    await test3.promise;
+    expect(test3.pending).toBe(false);
     expect(api.pending.value).toBe(false);
 
     test2.fetch();
-    expect(test2.pending.value).toBe(true);
+    expect(test2.pending).toBe(true);
     expect(api.pending.value).toBe(true);
 
-    await test2.promise.value;
-    expect(test2.pending.value).toBe(false);
+    await test2.promise;
+    expect(test2.pending).toBe(false);
     expect(api.pending.value).toBe(false);
 
     server.close();

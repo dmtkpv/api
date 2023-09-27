@@ -80,9 +80,9 @@ test('Pending', async () => {
     await test1.cancel();
 
     expect(Date.now() - time).toBeLessThan(100);
-    expect(test1.pending.value).toBe(false);
+    expect(test1.pending).toBe(false);
     expect(count).toBe(3);
-    expect(test1.error.value.message).toBe('cancelled_in_config');
+    expect(test1.error.message).toBe('cancelled_in_config');
 
     test1.fetch();
     test2.fetch();
@@ -101,8 +101,8 @@ test('Pending', async () => {
     await api.cancel('test3');
 
     expect(Date.now() - time).toBeLessThan(100);
-    expect(test3.pending.value).toBe(false);
-    expect(test3.error.value.name).toBe('CanceledError');
+    expect(test3.pending).toBe(false);
+    expect(test3.error.name).toBe('CanceledError');
     expect(count).toBe(9);
 
     server.close();
