@@ -6,10 +6,10 @@ test('Endpopint', async () => {
     const server = createServer();
     const port = server.address().port;
     const api = createAPI({ port });
-    const test = api.endpoint('test');
+    const test = api('test');
 
-    expect(test.data).toBe(undefined);
-    expect(test.error).toBe(undefined);
+    expect(test.data).toBe(null);
+    expect(test.error).toBe(null);
     expect(test.promise).resolves.toBe(undefined);
     expect(test.pending).toBe(false);
 
@@ -19,11 +19,11 @@ test('Endpopint', async () => {
     await test.promise;
     expect(test.pending).toBe(false);
     expect(test.data.data.ok).toBe(true);
-    expect(test.error).toBe(undefined);
+    expect(test.error).toBe(null);
 
     await test.quiet({ error: true });
     expect(test.pending).toBe(false);
-    expect(test.data).toBe(undefined);
+    expect(test.data).toBe(null);
     expect(test.error instanceof Error).toBe(true);
 
     server.close();

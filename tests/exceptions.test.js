@@ -5,14 +5,14 @@ test('Missing endpoints', () => {
 })
 
 test('Missing endpoint key', () => {
-    const { endpoint } = createAPI({ endpoints: {} });
-    expect(() => endpoint('test')).toThrow();
+    const api = createAPI({ endpoints: {} });
+    expect(() => api('test')).toThrow();
 })
 
 test('Wrong hook', () => {
-    const { endpoint, onSuccess } = createAPI({ endpoints: { test: {} } });
-    const { onError } = endpoint('test');
-    expect(() => onSuccess()).toThrow();
-    expect(() => onSuccess('test')).toThrow();
-    expect(() => onError('test', () => {})).toThrow();
+    const api = createAPI({ endpoints: { test: {} } });
+    const test = api('test');
+    expect(() => api.onSuccess()).toThrow();
+    expect(() => api.onSuccess('test')).toThrow();
+    expect(() => test.onError('test', () => {})).toThrow();
 })

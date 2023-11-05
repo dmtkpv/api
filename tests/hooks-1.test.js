@@ -36,10 +36,10 @@ test('Hooks 1', async () => {
             return {
                 url: '/',
                 params,
-                onFetch (config) {
+                onFetch ({ config }) {
                     expect(++count).toBe(3);
                     expect(config.url).toBe('/test');
-                    return { ...config, url: '/' }
+                    config.url = '/'
                 },
                 onSuccess (data) {
                     expect(++count).toBe(9);
@@ -68,7 +68,7 @@ test('Hooks 1', async () => {
     const server = createServer();
     const port = server.address().port;
     const api = createAPI({ endpoints, port });
-    const test = api.endpoint('test');
+    const test = api('test');
 
 
 
@@ -80,7 +80,7 @@ test('Hooks 1', async () => {
         expect(++count).toBe(1);
     })
 
-    api.onFetch('test', config => {
+    api.onFetch('test', ({ config }) => {
         expect(++count).toBe(2);
         config.url = '/test'
     })
@@ -141,7 +141,7 @@ test('Hooks 1', async () => {
     // Endpoint hooks
     // ------------------
 
-    test.onFetch(async config => {
+    test.onFetch(async ({ config }) => {
         expect(++count).toBe(4);
         expect(config.url).toBe('/');
         tick();

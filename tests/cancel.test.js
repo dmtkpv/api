@@ -56,9 +56,9 @@ test('Pending', async () => {
     const server = createServer();
     const port = server.address().port;
     const api = createAPI({ endpoints, port });
-    const test1 = api.endpoint('test1');
-    const test2 = api.endpoint('test2');
-    const test3 = api.endpoint('test3');
+    const test1 = api('test1');
+    const test2 = api('test2');
+    const test3 = api('test3');
     let time = Date.now();
 
     api.onCancel(error => {

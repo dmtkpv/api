@@ -6,7 +6,7 @@ test('Hooks 2', async () => {
     const server = createServer();
     const port = server.address().port;
     const api = createAPI({ port });
-    const test = api.endpoint('test');
+    const test = api('test');
 
     api.onFetch(() => {
         throw new Error('err');
