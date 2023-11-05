@@ -42,6 +42,16 @@ test('Pending', async () => {
                     delay: 1000
                 }
             }
+        },
+
+        test4 () {
+            return {
+                url: '/',
+                uncanceled: true,
+                params: {
+                    delay: 1000
+                }
+            }
         }
 
     }
@@ -59,6 +69,7 @@ test('Pending', async () => {
     const test1 = api('test1');
     const test2 = api('test2');
     const test3 = api('test3');
+    const test4 = api('test4');
     let time = Date.now();
 
     api.onCancel(error => {
@@ -104,6 +115,13 @@ test('Pending', async () => {
     expect(test3.pending).toBe(false);
     expect(test3.error.name).toBe('CanceledError');
     expect(count).toBe(9);
+
+    test4.quiet();
+    await api.cancel();
+    expect(api.pending.value).toBe(true);
+
+    await test4.cancel();
+    expect(api.pending.value).toBe(false);
 
     server.close();
 
